@@ -1,0 +1,377 @@
+<html>
+<head>
+<style>
+  /* put (optional) CSS here */
+  .border{
+      border-bottom-style: solid;
+      border-width: 2px;
+  }
+  .box{
+      border-style: solid;
+      border-width: 5px;
+  }
+  table{
+       border: 1px solid black;
+    }
+  td{
+      border: 1px solid black;
+      width:50px;
+      height:50px;
+      text-align:center;
+  }
+  .letter{
+      float:left;
+      background-color:#ddb200;
+      width:40px;
+      height:40px;
+      border-style: solid;
+      border-width:2px;
+      margin-left:3px;
+  }
+  
+  .playerdiv{
+      height:50px;
+      width:333px;
+      border-style:solid;
+      border-width:1px;
+      display:none;
+  }
+</style>
+<body onload='main()'>
+  
+    <h2 class='border' align = 'center'>Scrabble</h2>
+    
+    <p id = 'helloText' align='center'></p>
+    <center>
+    <input type = "text"
+       id = "userInput" 
+       onkeydown = "if (event.keyCode == 13)
+                        document.getElementById('btnSearch').click()"    
+    >
+    <input type = "button"
+       id = "btnSearch"
+       value = "Submit"
+       onclick = "submitData()"
+    />
+    
+    <!-- board is 15 by 15 -->
+        <input type = "button"
+        id = "endTurn"
+        value = "End Turn"
+        onclick = "checkWords()">
+        <div id='player1' class='playerdiv' ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div id='player2' class='playerdiv' ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div id='player3' class='playerdiv' ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div id='player4' class='playerdiv' ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    <table id='gameBoard' style="display:none;">
+        <tr ondrop="drop(event)" ondragover="allowDrop(event)"><td id='r1c1'></td><td id =r1c2></td><td id =r1c3></td><td id =r1c4></td><td id =r1c5></td><td id =r1c6></td><td id =r1c7></td><td id =r1c8></td><td id =r1c9></td><td id =r1c10></td><td id =r1c11></td><td id =r1c12></td><td id =r1c13></td><td id =r1c14></td><td id =r1c15></td></tr>
+        <tr ondrop="drop(event)" ondragover="allowDrop(event)"><td id='r2c1'></td><td id =r2c2></td><td id =r2c3></td><td id =r2c4></td><td id =r2c5></td><td id =r2c6></td><td id =r2c7></td><td id =r2c8></td><td id =r2c9></td><td id =r2c10></td><td id =r2c11></td><td id =r2c12></td><td id =r2c13></td><td id =r2c14></td><td id =r2c15></td></tr>
+        <tr ondrop="drop(event)" ondragover="allowDrop(event)"><td id='r3c1'></td><td id =r3c2></td><td id =r3c3></td><td id =r3c4></td><td id =r3c5></td><td id =r3c6></td><td id =r3c7></td><td id =r3c8></td><td id =r3c9></td><td id =r3c10></td><td id =r3c11></td><td id =r3c12></td><td id =r3c13></td><td id =r3c14></td><td id =r3c15></td></tr>
+        <tr ondrop="drop(event)" ondragover="allowDrop(event)"><td id='r4c1'></td><td id =r4c2></td><td id =r4c3></td><td id =r4c4></td><td id =r4c5></td><td id =r4c6></td><td id =r4c7></td><td id =r4c8></td><td id =r4c9></td><td id =r4c10></td><td id =r4c11></td><td id =r4c12></td><td id =r4c13></td><td id =r4c14></td><td id =r4c15></td></tr>
+        <tr ondrop="drop(event)" ondragover="allowDrop(event)"><td id='r5c1'></td><td id =r5c2></td><td id =r5c3></td><td id =r5c4></td><td id =r5c5></td><td id =r5c6></td><td id =r5c7></td><td id =r5c8></td><td id =r5c9></td><td id =r5c10></td><td id =r5c11></td><td id =r5c12></td><td id =r5c13></td><td id =r5c14></td><td id =r5c15></td></tr>
+        <tr ondrop="drop(event)" ondragover="allowDrop(event)"><td id='r6c1'></td><td id =r6c2></td><td id =r6c3></td><td id =r6c4></td><td id =r6c5></td><td id =r6c6></td><td id =r6c7></td><td id =r6c8></td><td id =r6c9></td><td id =r6c10></td><td id =r6c11></td><td id =r6c12></td><td id =r6c13></td><td id =r6c14></td><td id =r6c15></td></tr>
+        <tr ondrop="drop(event)" ondragover="allowDrop(event)"><td id='r7c1'></td><td id =r7c2></td><td id =r7c3></td><td id =r7c4></td><td id =r7c5></td><td id =r7c6></td><td id =r7c7></td><td id =r7c8></td><td id =r7c9></td><td id =r7c10></td><td id =r7c11></td><td id =r7c12></td><td id =r7c13></td><td id =r7c14></td><td id =r7c15></td></tr>
+        <tr ondrop="drop(event)" ondragover="allowDrop(event)"><td id='r8c1'></td><td id =r8c2></td><td id =r8c3></td><td id =r8c4></td><td id =r8c5></td><td id =r8c6></td><td id =r8c7></td><td id =r8c8></td><td id =r8c9></td><td id =r8c10></td><td id =r8c11></td><td id =r8c12></td><td id =r8c13></td><td id =r8c14></td><td id =r8c15></td></tr>
+        <tr ondrop="drop(event)" ondragover="allowDrop(event)"><td id='r9c1'></td><td id =r9c2></td><td id =r9c3></td><td id =r9c4></td><td id =r9c5></td><td id =r9c6></td><td id =r9c7></td><td id =r9c8></td><td id =r9c9></td><td id =r9c10></td><td id =r9c11></td><td id =r9c12></td><td id =r9c13></td><td id =r9c14></td><td id =r9c15></td></tr>
+        <tr ondrop="drop(event)" ondragover="allowDrop(event)"><td id='r10c1'></td><td id =r10c2></td><td id =r10c3></td><td id =r10c4></td><td id =r10c5></td><td id =r10c6></td><td id =r10c7></td><td id =r10c8></td><td id =r10c9></td><td id =r10c10></td><td id =r10c11></td><td id =r10c12></td><td id =r10c13></td><td id =r10c14></td><td id =r10c15></td></tr>
+        <tr ondrop="drop(event)" ondragover="allowDrop(event)"><td id='r11c1'></td><td id =r11c2></td><td id =r11c3></td><td id =r11c4></td><td id =r11c5></td><td id =r11c6></td><td id =r11c7></td><td id =r11c8></td><td id =r11c9></td><td id =r11c10></td><td id =r11c11></td><td id =r11c12></td><td id =r11c13></td><td id =r11c14></td><td id =r11c15></td></tr>
+        <tr ondrop="drop(event)" ondragover="allowDrop(event)"><td id='r12c1'></td><td id =r12c2></td><td id =r12c3></td><td id =r12c4></td><td id =r12c5></td><td id =r12c6></td><td id =r12c7></td><td id =r12c8></td><td id =r12c9></td><td id =r12c10></td><td id =r12c11></td><td id =r12c12></td><td id =r12c13></td><td id =r12c14></td><td id =r12c15></td></tr>
+        <tr ondrop="drop(event)" ondragover="allowDrop(event)"><td id='r13c1'></td><td id =r13c2></td><td id =r13c3></td><td id =r13c4></td><td id =r13c5></td><td id =r13c6></td><td id =r13c7></td><td id =r13c8></td><td id =r13c9></td><td id =r13c10></td><td id =r13c11></td><td id =r13c12></td><td id =r13c13></td><td id =r13c14></td><td id =r13c15></td></tr>
+        <tr ondrop="drop(event)" ondragover="allowDrop(event)"><td id='r14c1'></td><td id =r14c2></td><td id =r14c3></td><td id =r14c4></td><td id =r14c5></td><td id =r14c6></td><td id =r14c7></td><td id =r14c8></td><td id =r14c9></td><td id =r14c10></td><td id =r14c11></td><td id =r14c12></td><td id =r14c13></td><td id =r14c14></td><td id =r14c15></td></tr>
+        <tr ondrop="drop(event)" ondragover="allowDrop(event)"><td id='r15c1'></td><td id =r15c2></td><td id =r15c3></td><td id =r15c4></td><td id =r15c5></td><td id =r15c6></td><td id =r15c7></td><td id =r15c8></td><td id =r15c9></td><td id =r15c10></td><td id =r15c11></td><td id =r15c12></td><td id =r15c13></td><td id =r15c14></td><td id =r15c15></td></tr>
+    </table>
+    </center>
+
+
+  
+  <script>
+  //---To Do---//
+  //figure out a way to prevent it from scoring already played words
+  //list of played words compared against new words?(check whole board each time)
+  var letCount=0;
+  var mainText = document.getElementById("helloText");
+  var counter = 0;
+  var playernames = [];
+  var userInput=document.getElementById('userInput');
+  var numplayer;
+  var dict=[];
+  var totalWords=[];
+  var lastTotalWords=[];
+  var noWord=1;
+  var turnCount=0;
+  
+    function drag(ev) {
+        ev.dataTransfer.setData("text", ev.target.id);
+    }
+    
+    function allowDrop(ev) {
+    ev.preventDefault();
+    }
+
+    function drop(ev) {
+        ev.preventDefault();
+        var data = ev.dataTransfer.getData("text"); //the ID of the element your dragging
+        ev.target.appendChild(document.getElementById(data)); //adds the element to the target element
+    }
+    
+    function checkWords(){
+        var score = 0;
+        checkWordsColumn();
+        checkWordsRow();
+        if(noWord>0){
+            score+=compareWords();
+        }
+        lastTotalWords=lastTotalWords.concat(totalWords);
+        totalWords=[];
+        if(score==0){
+            mainText.textContent='That is not a valid move.';
+        } else if(score>0){
+            mainText.textContent='That word was worth '+String(score)+' points!';
+        }
+        noWord=1;
+        
+        if(players[turnCount][2]==undefined){
+            players[turnCount].push(score);
+            console.log(players[turnCount][2]+'player'+turnCount);
+        } else {
+            players[turnCount][2]+=score;
+            console.log(players[turnCount][2]);
+        }
+        if (turnCount<playernames.length){
+            turnCount+=1;
+            if (turnCount==playernames.length){
+                turnCount=0;
+            }
+        }
+    }
+    
+    function compareWords(){
+        var temp =[];
+        var score=0;
+        console.log('lasttotalWords',lastTotalWords);
+        for(var i = 0;i<totalWords.length;i++){
+            for (var x = 0;x<lastTotalWords.length;x++){
+                if (lastTotalWords[x]===totalWords[i]){
+                    temp.push(lastTotalWords[x]); //find all indexs of the word then skip it if it is equal to one of the indexs' probably error prone.
+                    console.log(x,i,lastTotalWords[x]);
+                }
+            }
+        }
+        console.log(temp,'|',totalWords);
+        for (var i=0;i<temp.length;i++){
+            console.log(temp[i].indexOf(),'temp index',temp);
+            totalWords.splice((temp[i]).indexOf(),1);
+        }
+        console.log(totalWords);
+        for (var i=0;i<totalWords.length;i++){
+            score+= checkScore(totalWords[i]);
+        }
+    console.log(score);
+    return score;
+    }
+    
+    function checkWordsColumn(){ //fix this to be neat
+        var word=[];
+        for(var column = 1; column<=15; column++){
+            for(var row=1; row<=15; row++){
+                var stringvalue = String('r'+row+'c'+column);
+                var letter=document.getElementById(stringvalue).textContent; //Gets the letter from the row/column.
+                if(letter!=''){
+                    word.push(letter);
+                    } else {
+                    var theword = word.join('');
+                    word=[];
+                    if (isWord(theword)==true){
+                        if (theword!=''){
+                            totalWords.push(theword);
+                            }
+                        } else if(isWord(theword)==true){
+                            if (theword!=''){
+                                noWord=-1;
+                                column=16;
+                                }
+                    }
+            }
+        }
+    }
+    }
+    //fix this ugly PoS at some point.
+    function checkWordsRow(){
+        var word=[];
+        for(var row = 1; row<=15; row++){
+            for(var column=1; column<=15; column++){
+                var stringvalue = String('r'+row+'c'+column);
+                var letter=document.getElementById(stringvalue).textContent; //Gets the letter from the row/column.
+                if(letter!=''){
+                    word.push(letter);
+                    } else {
+                    var theword = word.join('');
+                    word=[];
+                    if (isWord(theword)==true){
+                        if (theword!=''){
+                            totalWords.push(theword);
+                            }
+                        }else if(isWord(theword)==true){
+                            if (theword!=''){
+                                noWord=-1;
+                                row=16;
+                                }
+                    }
+            }
+        }
+    }
+    }
+    
+    function createTile(letter,player){
+            var leta=document.createElement('div');
+            var element=document.getElementById(String('player'+player));
+            var addServer=document.createTextNode(letter);
+            leta.setAttribute("id", String('Let'+letCount));
+            leta.setAttribute('class','letter');
+            leta.setAttribute('draggable','true');
+            leta.setAttribute('ondragstart',"drag(event)");
+            leta.appendChild(addServer);
+            element.appendChild(leta);
+            letCount+=1;
+    }
+
+
+
+    function submitData(){
+        //GET PLAYER NAME
+        if (counter==0){
+            mainText.textContent = 'Please enter a number of players between 1 and 4.';
+            numplayer =+userInput.value;
+            if (numplayer >0){
+                counter +=1;
+                 mainText.textContent = 'Player '+JSON.stringify(counter)+' please enter your name';
+            }
+            userInput.value = '';
+            console.log(counter,numplayer);
+        } else if (counter>0 && counter<numplayer+1 ){
+            counter +=1;
+            mainText.textContent = 'Player '+JSON.stringify(counter)+' please enter your name';
+            playernames.push(userInput.value);
+            userInput.value = '';
+            console.log(counter,playernames);
+            if (counter>numplayer){
+                mainText.textContent = '';
+                document.getElementById("userInput").style.visibility = "hidden";
+                document.getElementById("btnSearch").style.visibility = "hidden";
+                document.getElementById('gameBoard').style.display = 'inline';
+                for (var i=1; i<=numplayer; i++){
+                    players.push([playernames[i-1],deal([],String(i))]);
+                }
+                for(var i =1;i<=numplayer;i++){
+                    document.getElementById(String('player'+String(i))).style.display='inherit';
+                    
+                }
+                counter=0;
+            }
+        }
+    }
+    
+    //reads dict file and returns array of lines //
+    function readDict(file)
+    {
+        var read;
+        var rawFile = new XMLHttpRequest();
+        rawFile.open("GET", file, false);
+        rawFile.onreadystatechange = function ()
+        {
+            if(rawFile.readyState === 4)
+            {
+                if(rawFile.status === 200 || rawFile.status == 0)
+                {
+                    var allText = rawFile.responseText;
+                    read = allText.split('\n');
+                }
+            }
+        };
+        rawFile.send(null);
+        parse(read);
+    }
+    
+    //Takes array of lines and gets rid of everything after the first word//
+    function parse(lines){
+        for (var i=0;i<lines.length;i++){
+            var word = lines[i].split(' ');
+            dict.push(word[0]);
+        }
+    }
+    
+    //Checks if word is in Dict//
+    function isWord(word){
+        if(word==''){
+            return false;
+        }
+        for(var i=0; i<dict.length;i++){
+            if(word===dict[i]){
+                return true;
+            } 
+        }
+    return false;
+    }
+    
+    //Takes word and returns point value of word//
+    function checkScore(word){
+        var letters = word.toUpperCase().split('');
+        var score = 0;
+        for (var i = 0;i<letters.length;i++){
+            if ('EAIONRTLSU'.indexOf(letters[i]) > -1 ){
+                score += 1;
+            } else if ('DG'.indexOf(letters[i]) > -1 ){
+                score += 2;
+            } else if ('BCMP'.indexOf(letters[i]) > -1 ){
+                score += 3;
+            }  else if ('FHVWY'.indexOf(letters[i]) > -1 ){
+                score += 4;
+            } else if ('K'.indexOf(letters[i]) > -1 ){
+                score += 5;
+            } else if ('JX'.indexOf(letters[i]) > -1 ){
+                score += 8;
+            } else if ('QZ'.indexOf(letters[i]) > -1 ){
+                score += 10;
+            }
+        }
+        return score;
+    }
+    
+    //deals hand
+    function deal(oldHand,player){
+        var newHand = [];
+        var lets = ['E','A','I','O','N','R','T','L','S','U','B','C','M','P','F','H','V','W','Y','K','J','X','Q','Z']; 
+        for (var i= 0; i<(7-oldHand.length);i++){
+            var letr = lets[Math.floor(Math.random()*lets.length)];
+            newHand.push(letr);
+            createTile(letr,player);
+        }
+        newHand.push.apply(oldHand);
+        return newHand;
+    }
+    
+    //The Game
+    var players = []; 
+    function game(){
+        //Takes names from submitData and combines them with a hand of letters obtained from deal()
+        submitData();
+    }
+    
+    function getHand(player){
+        var x=document.getElementById(String('player'+player)).childNodes;
+        for(var i=0;i<x.length;i++){
+            console.log(x[i].textContent);
+        }
+    }
+
+
+    function main(){
+        readDict("OWL.txt");
+        console.log(isWord('Waffles'));
+        var score = checkScore('waffles');
+        console.log(score);
+        game();
+    }
+  </script>
+</body>
+</html>

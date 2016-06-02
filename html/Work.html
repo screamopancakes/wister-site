@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+        <style>
+    table, th{
+           border: 1px solid black;
+        }
+        
+        </style>
+        <title> Work</title>
+    <body>
+     <!--<form name="TableEditForm"  action="http://broadway.usedapplestore.com/cgi-bin/UsedAppleStore/a.out" method="post" target="_blank">-->
+     <form name="TableEditForm"  action="HelloWorld.cpp" method="post" target="_blank">
+     <table>
+         <tr><td>Table Number</td><td><input id ="tableNumberField" style="face-family:Arial; font-size:14px;" type="text" name="Subject" value="" maxlength="100" size="30"> </td></tr>
+         <tr><td>Servers Name</td><td><input id = "tableServersNameField" style="face-family:Arial; font-size:14px;" type="text" name="Subject" value="" maxlength="100" size="30"> </td></tr>
+         <tr><td>Max Number Seatable</td><td><input id = "tableMaxSeatedField" style="face-family:Arial; font-size:14px;" type="text" name="Subject" value="" maxlength="100" size="30"></td></tr>
+         <tr><td>Current Seated</td><td><input id = "tableCurrentSeatedField" style="face-family:Arial; font-size:14px;" type="text" name="Subject" value="" maxlength="100" size="30"></td></tr>
+         <tr><td align = 'right'><input type = "button" class="btn" value="Save" name="Submit" onClick ="alert(&quot;test&quot;)"></td><td>
+         <input  type="reset" class="btn" value="Cancel" name="Clear"></td></tr>
+     </table>
+     </form>
+     <script>
+         function SaveButtonInfo(){
+             //alert('You Clicked Save');
+             var theTableNumberText = document.getElementById("tableNumberField").value;
+             var theTableServerText = document.getElementById("tableServersNameField").value;
+             var theTableMaxSeatedText = document.getElementById("tableMaxSeatedField").value;
+             var theTableCurrentSeatedText = document.getElementById("tableCurrentSeatedField").value;
+             alert(theTableNumberText+' '+theTableServerText+' '+ theTableMaxSeatedText+' '+theTableCurrentSeatedText);
+             //TableEditForm.submit();
+         }
+ 
+     </script>
+    </body>
+</html>

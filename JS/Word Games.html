@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+        <style>
+    table, th{
+           border: 1px solid black;
+        }
+    p{
+        border:1px solid black;
+    }
+        
+        </style>
+        <title> Work</title>
+    <body>
+     <center>
+     <div>
+     <p style='width:300px'>Mad Lib</p>
+     <table id='table'>
+         <tr><td>NOUN</td><td><input id ="input1" style="face-family:Arial; font-size:14px;" type="text" name="Subject" value="" maxlength="100" size="30"> </td></tr>
+         <tr><td>NOUN(PLURAL)</td><td><input id = "input2" style="face-family:Arial; font-size:14px;" type="text" name="Subject" value="" maxlength="100" size="30"> </td></tr>
+         <tr><td>NOUN</td><td><input id = "input3" style="face-family:Arial; font-size:14px;" type="text" name="Subject" value="" maxlength="100" size="30"></td></tr>
+         <tr><td>PLACE</td><td><input id = "input4" style="face-family:Arial; font-size:14px;" type="text" name="Subject" value="" maxlength="100" size="30"></td></tr>
+         <tr><td>ADJECTIVE</td><td><input id = "input5" style="face-family:Arial; font-size:14px;" type="text" name="Subject" value="" maxlength="100" size="30"></td></tr>
+         <tr><td>NOUN</td><td><input id = "input6" style="face-family:Arial; font-size:14px;" type="text" name="Subject" value="" maxlength="100" size="30"></td></tr>
+         <tr><td align = 'right'><input type = "submit" class="btn" value="Save" name="Submit" onClick ="SaveButtonInfo()"></td><td></tr>
+     </table>
+     <p id = 'libText' style='display: none;'></p>
+     </div>
+     <div>
+         <p style='width:300px'>Pig Latin</p>
+         <input id ="pigLatin" style="face-family:Arial; font-size:14px;" type="text" name="Subject" value="" maxlength="100" size="30" onKeyDown="if (event.keyCode == 13) document.getElementById('pigSubmit').click()">
+         <input id= 'pigSubmit' type = "submit" class="btn" value="Save" name="Submit" onClick ="pigLatin();">
+         <input type = "submit" class="btn" value="Clear" name="Submit" onClick ="document.getElementById('pigLatin').value='';">
+         <p id='pigLatinOutput' style='display:none; width:375px;'></p>     
+     </div>
+     </center>
+     <script>
+         function SaveButtonInfo(){
+             var input1 = document.getElementById("input1").value;
+             var input2 = document.getElementById("input2").value;
+             var input3 = document.getElementById("input3").value;
+             var input4 = document.getElementById("input4").value;
+             var input5 = document.getElementById("input5").value;
+             var input6 = document.getElementById("input6").value;
+             var libText=document.getElementById('libText');
+             libText.style.display='inherit';
+             libText.style.width='375px';
+             libText.textContent='Be kind to your '+input1+'-footed '+input2+'. For a duck may be somebody`s '+input3+' ,Be kind to your duck in '+input4+' Where the weather is always '+input5+'.You may think that this is the '+input6+', Well it is.';
+         }
+         
+         function pigLatin(){
+             var string= document.getElementById('pigLatin').value;
+             var words=string.split(' ');
+             var finish=[];
+             for (var i=0;i<words.length;i++){
+                 var letter=words[i].split('');
+                 if (['a','e','i','o','u'].indexOf(letter[0])>-1){
+                     if(words[i][words[i].length-1]=='.'){
+                          words[i]=words[i].substring(0,words[i].length-1)+'way.'
+                          finish.push(words[i]);
+                     }else{
+                        words[i]=words[i]+'way';
+                        finish.push(words[i]);
+                     }
+                 } else if (letter[0]==undefined){
+                     
+                 } else {
+                     if(words[i][words[i].length-1]=='.'){
+                          words[i]=words[i].substring(1,words[i].length-1)+letter[0]+'ay.'
+                          finish.push(words[i]);
+                     }else{
+                        words[i]=words[i].substring(1)+letter[0]+'ay';
+                        finish.push(words[i]);
+                     }
+                 }
+            var output=document.getElementById('pigLatinOutput');
+            output.textContent=finish.join(' ');
+            output.style.display='inherit';
+             }
+         }
+     </script>
+    </body>
+</html>

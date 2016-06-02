@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>rainbow text tests </title>
+    </head>
+    <style>
+        .unicorn.animate span {
+    -webkit-animation: colorRotate 6s linear 0s infinite;
+    -moz-animation: colorRotate 6s linear 0s infinite;
+    -o-animation: colorRotate 6s linear 0s infinite;
+    animation: colorRotate 6s linear 0s infinite;
+    
+    -webkit-animation-play-state: paused;
+    -moz-animation-play-state: paused;
+    -o-animation-play-state: paused;
+    animation-play-state: paused;
+}
+.unicorn:hover span {
+    -webkit-animation-play-state: running;
+    -moz-animation-play-state: running;
+    -o-animation-play-state: running;
+    animation-play-state: running;
+}
+@-webkit-keyframes colorRotate {
+    from {
+        color: rgb(255, 0, 0);
+    }
+    16.6% {
+        color: rgb(255, 0, 255);
+    }
+    33.3% {
+        color: rgb(0, 0, 255);
+    }
+    50% {
+        color: rgb(0, 255, 255);
+    }
+    66.6% {
+        color: rgb(0, 255, 0);
+    }
+    83.3% {
+        color: rgb(255, 255, 0);
+    }
+    to {
+        color: rgb(255, 0, 0);
+    }
+}
+@-moz-keyframes colorRotate {
+    from {
+        color: rgb(255, 0, 0);
+    }
+    16.6% {
+        color: rgb(255, 0, 255);
+    }
+    33.3% {
+        color: rgb(0, 0, 255);
+    }
+    50% {
+        color: rgb(0, 255, 255);
+    }
+    66.6% {
+        color: rgb(0, 255, 0);
+    }
+    83.3% {
+        color: rgb(255, 255, 0);
+    }
+    to {
+        color: rgb(255, 0, 0);
+    }
+}
+@-o-keyframes colorRotate {
+    from {
+        color: rgb(255, 0, 0);
+    }
+    16.6% {
+        color: rgb(255, 0, 255);
+    }
+    33.3% {
+        color: rgb(0, 0, 255);
+    }
+    50% {
+        color: rgb(0, 255, 255);
+    }
+    66.6% {
+        color: rgb(0, 255, 0);
+    }
+    83.3% {
+        color: rgb(255, 255, 0);
+    }
+    to {
+        color: rgb(255, 0, 0);
+    }
+}
+@keyframes colorRotate {
+    from {
+        color: rgb(255, 0, 0);
+    }
+    16.6% {
+        color: rgb(255, 0, 255);
+    }
+    33.3% {
+        color: rgb(0, 0, 255);
+    }
+    50% {
+        color: rgb(0, 255, 255);
+    }
+    66.6% {
+        color: rgb(0, 255, 0);
+    }
+    83.3% {
+        color: rgb(255, 255, 0);
+    }
+    to {
+        color: rgb(255, 0, 0);
+    }
+}
+    </style>
+    <body>
+<p class="unicorn"> <span style="color: hsl(0, 100%, 50%);">L</span><span style="color: hsl(4, 100%, 50%);">o</span><span style="color: hsl(7, 100%, 50%);">r</span><span style="color: hsl(10, 100%, 50%);">e</span><span style="color: hsl(13, 100%, 50%);">m</span><span style="color: hsl(16, 100%, 50%);"> </span><span style="color: hsl(19, 100%, 50%);">i</span><span style="color: hsl(23, 100%, 50%);">p</span><span style="color: hsl(26, 100%, 50%);">s</span><span style="color: hsl(29, 100%, 50%);">u</span><span style="color: hsl(32, 100%, 50%);">m</span><span style="color: hsl(35, 100%, 50%);"> </span><span style="color: hsl(38, 100%, 50%);">d</span><span style="color: hsl(42, 100%, 50%);">o</span><span style="color: hsl(45, 100%, 50%);">l</span><span style="color: hsl(48, 100%, 50%);">o</span><span style="color: hsl(51, 100%, 50%);">r</span><span style="color: hsl(54, 100%, 50%);"> </span><span style="color: hsl(57, 100%, 50%);">s</span><span style="color: hsl(60, 100%, 50%);">i</span><span style="color: hsl(64, 100%, 50%);">t</span><span style="color: hsl(67, 100%, 50%);"> </span><span style="color: hsl(70, 100%, 50%);">a</span><span style="color: hsl(73, 100%, 50%);">m</span><span style="color: hsl(76, 100%, 50%);">e</span><span style="color: hsl(79, 100%, 50%);">t</span><span style="color: hsl(83, 100%, 50%);">,</span><span style="color: hsl(86, 100%, 50%);"> </span><span style="color: hsl(89, 100%, 50%);">c</span><span style="color: hsl(92, 100%, 50%);">o</span><span style="color: hsl(95, 100%, 50%);">n</span><span style="color: hsl(98, 100%, 50%);">s</span><span style="color: hsl(102, 100%, 50%);">e</span><span style="color: hsl(105, 100%, 50%);">c</span><span style="color: hsl(108, 100%, 50%);">t</span><span style="color: hsl(111, 100%, 50%);">e</span><span style="color: hsl(114, 100%, 50%);">t</span><span style="color: hsl(117, 100%, 50%);">u</span><span style="color: hsl(120, 100%, 50%);">r</span><span style="color: hsl(124, 100%, 50%);"> </span><span style="color: hsl(127, 100%, 50%);">a</span><span style="color: hsl(130, 100%, 50%);">d</span><span style="color: hsl(133, 100%, 50%);">i</span><span style="color: hsl(136, 100%, 50%);">p</span><span style="color: hsl(139, 100%, 50%);">i</span><span style="color: hsl(143, 100%, 50%);">s</span><span style="color: hsl(146, 100%, 50%);">i</span><span style="color: hsl(149, 100%, 50%);">c</span><span style="color: hsl(152, 100%, 50%);">i</span><span style="color: hsl(155, 100%, 50%);">n</span><span style="color: hsl(158, 100%, 50%);">g</span><span style="color: hsl(162, 100%, 50%);"> </span><span style="color: hsl(165, 100%, 50%);">e</span><span style="color: hsl(168, 100%, 50%);">l</span><span style="color: hsl(171, 100%, 50%);">i</span><span style="color: hsl(174, 100%, 50%);">t</span><span style="color: hsl(177, 100%, 50%);">.</span><span style="color: hsl(180, 100%, 50%);"> </span><span style="color: hsl(184, 100%, 50%);">C</span><span style="color: hsl(187, 100%, 50%);">u</span><span style="color: hsl(190, 100%, 50%);">p</span><span style="color: hsl(193, 100%, 50%);">i</span><span style="color: hsl(196, 100%, 50%);">d</span><span style="color: hsl(199, 100%, 50%);">i</span><span style="color: hsl(203, 100%, 50%);">t</span><span style="color: hsl(206, 100%, 50%);">a</span><span style="color: hsl(209, 100%, 50%);">t</span><span style="color: hsl(212, 100%, 50%);">e</span><span style="color: hsl(215, 100%, 50%);"> </span><span style="color: hsl(218, 100%, 50%);">a</span><span style="color: hsl(222, 100%, 50%);">l</span><span style="color: hsl(225, 100%, 50%);">i</span><span style="color: hsl(228, 100%, 50%);">q</span><span style="color: hsl(231, 100%, 50%);">u</span><span style="color: hsl(234, 100%, 50%);">i</span><span style="color: hsl(237, 100%, 50%);">d</span><span style="color: hsl(240, 100%, 50%);"> </span><span style="color: hsl(244, 100%, 50%);">m</span><span style="color: hsl(247, 100%, 50%);">a</span><span style="color: hsl(250, 100%, 50%);">i</span><span style="color: hsl(253, 100%, 50%);">o</span><span style="color: hsl(256, 100%, 50%);">r</span><span style="color: hsl(259, 100%, 50%);">e</span><span style="color: hsl(263, 100%, 50%);">s</span><span style="color: hsl(266, 100%, 50%);"> </span><span style="color: hsl(269, 100%, 50%);">d</span><span style="color: hsl(272, 100%, 50%);">o</span><span style="color: hsl(275, 100%, 50%);">l</span><span style="color: hsl(278, 100%, 50%);">o</span><span style="color: hsl(282, 100%, 50%);">r</span><span style="color: hsl(285, 100%, 50%);">e</span><span style="color: hsl(288, 100%, 50%);">m</span><span style="color: hsl(291, 100%, 50%);">q</span><span style="color: hsl(294, 100%, 50%);">u</span><span style="color: hsl(297, 100%, 50%);">e</span><span style="color: hsl(300, 100%, 50%);"> </span><span style="color: hsl(304, 100%, 50%);">m</span><span style="color: hsl(307, 100%, 50%);">o</span><span style="color: hsl(310, 100%, 50%);">l</span><span style="color: hsl(313, 100%, 50%);">e</span><span style="color: hsl(316, 100%, 50%);">s</span><span style="color: hsl(319, 100%, 50%);">t</span><span style="color: hsl(323, 100%, 50%);">i</span><span style="color: hsl(326, 100%, 50%);">a</span><span style="color: hsl(329, 100%, 50%);">e</span><span style="color: hsl(332, 100%, 50%);"> </span><span style="color: hsl(335, 100%, 50%);">c</span><span style="color: hsl(338, 100%, 50%);">o</span><span style="color: hsl(342, 100%, 50%);">r</span><span style="color: hsl(345, 100%, 50%);">r</span><span style="color: hsl(348, 100%, 50%);">u</span><span style="color: hsl(351, 100%, 50%);">p</span><span style="color: hsl(354, 100%, 50%);">t</span><span style="color: hsl(357, 100%, 50%);">i</span>
+
+</p>
+    </body>
+    <script>
+        // add animation-delay properties to span elements
+
+var animTime = 6, // time for the animation in seconds
+    hueChange = 3, // the hue change from one span element to the next
+    prefixes = ["", "-webkit-", "-moz-", "-o-"],
+    numPrefixes = prefixes.length;
+
+$('.unicorn').find('span').each(function (i) {
+    for (var j = 0; j < numPrefixes; j++) {
+        $(this).css(prefixes[j] + 'animation-delay', (animTime * ((i * hueChange) % 360) / 360) - animTime + 's');
+    }
+});
+
+// needed to avoid Chrome bug:
+$('.unicorn').one('mouseover',function(){
+    $(this).addClass('animate');
+});
+    </script>
+</html>

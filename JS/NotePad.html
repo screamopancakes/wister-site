@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> </title>
+    </head>
+    <style>
+        table{
+           border: 1px solid black;
+        }
+        .note{
+            border: 1px solid black;
+            background-color: white;
+        }
+    </style>
+    <body>
+        <div>
+            <h2>NotePad</h2>
+            <table>
+            <tr><td>Title</td><td><input id ="titleInput" style="face-family:Arial; font-size:14px;" type="text" value="" maxlength="100" size="30" ></td></tr>
+            <tr><td>Content</td><td><textarea id='contentInput' rows="4" cols="31" onkeydown = "if (event.keyCode == 13) document.getElementById('btnSearch').click()"></textarea></td></tr>
+            <tr><td><input type='button' id='btnSearch' value='submit' onClick='addNote()'></td></tr>
+            </table>
+        </div>
+        <div id='notesDiv'>
+        </div>
+        
+        
+        <script>
+        var noteCount=0
+            function returnDate(){
+                var d = new Date();
+                var date = d.toDateString()+' '+d.toLocaleTimeString()
+                return date;
+            }
+            
+            function addNote(){
+                var title=document.getElementById('titleInput').value;
+                var content=document.getElementById('contentInput').value;
+                var note=document.createElement('p');
+                var element=document.getElementById('notesDiv');
+                var contentNode=[document.createTextNode(title),document.createTextNode(returnDate()),document.createTextNode(content)];
+                note.setAttribute("id", String('note'+noteCount));
+                note.setAttribute('class','note');
+                var header=document.createElement('h2');
+                note.appendChild(header);
+                header.appendChild(contentNode[0]);
+                for (var i=1;i<contentNode.length;i++){
+                    note.appendChild(contentNode[i]);
+                    note.appendChild(document.createElement('br'));
+                    note.appendChild(document.createElement('br'));
+                }
+                var button=document.createElement('input')
+                button.value='delete Note';
+                button.setAttribute('type','button');
+                button.setAttribute('onclick',"this.parentElement.style.display = 'none'");
+                note.appendChild(button);
+                element.appendChild(note);
+                document.getElementById('contentInput').value='';
+                document.getElementById('titleInput').value='';
+                noteCount+=1;
+            }
+        </script>
+    </body>
+</html>

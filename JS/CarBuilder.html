@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> </title>
+    </head>
+    <style>
+        table,td,th{
+           border: 1px dotted black;
+           border-spacing:5px;
+           padding:10px;
+        }
+    </style>
+    <body>
+        <table style='float:left;' id ='carForm'>
+            <tr><th colspan='2'>Build</th></tr>
+            <tr><td>Make</td><td><input id ="makeInput" type="text" maxlength="100" size="30" ></td></tr>
+            <tr><td>Model</td><td><input id ="modelInput" type="text" maxlength="100" size="30" ></td></tr>
+            <tr><td>Style</td><td><select id="cars">
+                                      <option value=""></option>
+                                      <option value="Volvo">Volvo</option>
+                                      <option value="Saab">Saab</option>
+                                      <option value="Fiat">Fiat</option>
+                                      <option value="Audi">Audi</option></td></tr>
+            <tr><td>Transmission</td><td>
+                                        <input type="radio" name="tran" value="Manu">Manual <br>
+                                        <input type="radio" name="tran" value="Auto">Automatic <br></td></tr>
+            <tr><td>Options</td><td>
+                                        <input type="checkbox" name="extras" value="Seats">Heated Seats <br>
+                                        <input type="checkbox" name="extras" value="Sounds">Premium Sound <br></td></tr>
+            <tr><td colspan='2'><center><input type='button' value='Submit' onclick='submit()'></center></td></tr>
+        </table>
+        <table id='carPost'style='float:left;'>
+            <tr><th colspan='5'>View</th></tr>
+            <tr><th>Make</th><th>Model</th><th>Style</th><th>Transmission</th><th>Options</th></tr>
+            
+        </table>
+        
+        <script>
+        var rowValue=0;
+            
+            function submit(){
+                var postData=[];
+                postData.push(document.getElementById('makeInput').value);
+                postData.push(document.getElementById('modelInput').value);
+                postData.push(document.getElementById('cars').value);
+                var tran=document.getElementsByName('tran');
+                for (var i=0;i<tran.length;i++){
+                    if (tran[i].checked){
+                        postData.push(tran[i].value);
+                    }
+                }
+                var options=document.getElementsByName('extras');
+                var optionsList=[];
+                for (var i=0;i<options.length;i++){
+                    if (options[i].checked){
+                        optionsList.push(options[i].value);
+                    }
+                }
+                console.log(optionsList.join(', '));
+                postData.push(optionsList.join(', '));
+                console.log(postData)
+                
+                var tableRow=document.createElement('tr');
+                for (var i=0;i<postData.length;i++){
+                    var tableData=document.createElement('td');
+                    var text=document.createTextNode(postData[i]);
+                    tableData.appendChild(text);
+                    tableRow.appendChild(tableData);
+                }
+                document.getElementById('carPost').appendChild(tableRow);
+                rowValue+=1;
+            }
+        </script>
+    </body>
+</html>

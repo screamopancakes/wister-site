@@ -1,0 +1,112 @@
+<html>
+<head>
+<style>
+  /* put (optional) CSS here */
+</style>
+<body onload='main()'>
+  
+  <h1> JavaScript WS </h1>
+  <table>
+    <tr>
+  <button id='help' onclick='changeColor(this)'>test</button>
+  </tr>
+  </table>
+  <!-- Answer non-coding questions using HTML... -->
+  <h2 onclick='changeColor(this)'> Essentials </h2>
+  <ul>
+      <li>Use Ctrl+Shift+J to view console output and error messages.</li>
+      <li>To run your JavaScript, simply refresh the page. </li>
+  </ul>
+  
+  <script>
+    // use functions to organize your answers to coding questions
+    function essentials(){
+      console.log("Hello, World!");
+    }
+    function logic(){
+      console.log('***LOGIC AND CONDITIONS***');
+      var x = 10;
+      var y = 20;
+      if (x > y){
+        console.log(x);
+      } else if (y > x) {
+        console.log(y);
+      } else {
+        console.log('the numbers are the same amount');
+      }
+      
+      x='Elephant';
+      y='cats';
+      if (x > y){
+        console.log(y);
+      } else if (y > x) {
+        console.log(x);
+      } else {
+        console.log('the Words are the same.');
+      }
+      if (x != y){
+        console.log(x,'is not the same as',y);
+      }
+      if (x.length > 5 && y.length > 5){
+        console.log(x,'and',y,'are greater than 5 characters long.');
+      } else if (x.length > 5 || y.length > 5){
+        console.log('One of the words is greater than 5 characters long');
+      } else { 
+        console.log('one or more of the words are less than 5 characters long');
+      }
+    }
+    function strings(){
+      console.log('***STRINGS AND ARRAYS***');
+      var x = ['Array','of','strings'];
+      console.log(x);
+      for (var i=0;i<x.length;i++){
+        console.log(x[i].toUpperCase());
+      }
+      console.log(x.indexOf('Array'))
+      x.slice(x.indexOf('Array',1));
+      console.log(x.length+' the length of the array')
+      var y=['extra','array']
+      x = x.concat(y);
+      x.push('more');
+      var newstring=x.join('');
+      console.log(newstring);
+      x.sort()
+      console.log(x+' sorted');
+      console.log(x.shift());
+      console.log(x.unshift('more','length'));
+      x.splice(x.indexOf('Array'),1,'waffles');
+      console.log(x);
+    }
+      
+    function loops(){
+      console.log('***LOOPS***');
+      var x=0;
+      while (x<10){
+        console.log('While loop '+x);
+        x++;
+      }
+      for (var i=0;i<10;i++){
+        console.log('For loop '+i);
+      }
+        var string='THIS IS A REALLY LONG STRING';
+        for (var i=0;i<string.length;i++){
+          console.log(string.charAt(i));
+        }
+        for (var i=0;i<string.length;i++){
+          console.log(string[i]);
+        }
+      }
+    function changeColor(element){
+      element.style.borderWidth='10px';
+    }
+
+    // call your question functions here
+    function main(){
+      essentials();
+      logic();
+      strings();
+      loops();
+    }
+  </script>
+</body>
+</html>

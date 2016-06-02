@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> </title>
+    </head>
+    <body>
+
+<h1> Canvas! </h1>
+<canvas id="game" width="400" height="250"></canvas>
+<script> initialize() </script>
+    </body>
+    <script>
+        var initialize = function(){
+    
+    // get the canvas and context
+    var c = document.getElementById("game")
+    var ctx = c.getContext("2d")
+    
+    // ctx properties
+    ctx.lineWidth=5
+    ctx.strokeStyle='red'
+    ctx.fillStyle='blue'
+    
+    // line
+    ctx.moveTo(50,100);
+    ctx.lineTo(100,200);
+    ctx.stroke(); 
+    
+    // rectangle - simple
+    ctx.fillRect(10,10,150,75)
+    
+    // rectangle w/ border
+    ctx.rect(200,10,150,75);
+    ctx.stroke()
+    ctx.fill()
+    
+    // arcs and circles
+    ctx.beginPath();
+    ctx.arc(175,150,40,0,2*Math.PI);
+    ctx.stroke();
+    
+    // closed path
+    ctx.beginPath();
+    ctx.moveTo(250,125);
+    ctx.lineTo(300,175);
+    ctx.lineTo(350,125);
+    ctx.closePath(); 
+    ctx.stroke();
+    ctx.fill()
+    
+    // text
+    ctx.font = "30px Arial";
+    ctx.fillText("Hello World",10,250);
+    ctx.lineWidth=1;
+    ctx.strokeText("Hello World",200,250); 
+}
+    </script>
+</html>

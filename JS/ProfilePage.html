@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> </title>
+    </head>
+    <style>
+        .acc{
+            border:1px solid black;
+            padding:5px;
+            margin:10px;
+        }
+        .mainDiv{
+        }
+    </style>
+    <body>
+        <div id='mainDiv' class='mainDiv'>
+            <h1>PROFILE</h1>
+            <div class='acc'>
+                <h3>Account Info</h3><br>
+                Username: <input id ='userInput' type='text'><br>
+                Password: <input id='passInput' type='password'><br>
+                <input id='savePass' type='button' value='Submit' onclick='submitPass(0)'><input id='editPass' type='button' value='Edit' onclick='submitPass(1)' style='display:none;'>
+            </div>
+            
+            <div class='acc'>
+                <h3>Prefrences</h3>
+                <table>
+                    <tr><td>Background Color</td><td><input type='color' id='bckgColor' value='#FFFFFF'></td></tr>
+                    <tr><td>Font Family</td><td><select id="fontFamily">
+                                                  <option value="Times New Roman">Times New Roman</option>
+                                                  <option value="Arial">Arial</option>
+                                                  <option value="Verdana">Verdana</option>
+                                                  <option value="Courier New">Courier New</option></td></tr>
+                    <tr><td>Font Size</td><td><input type="range" id='fontRange' min='10' max='30' value='16'></td></tr>
+                    <tr><td>Font Color</td><td><input type='color' id='fontColor' value='#000000'></td></tr>
+                    <tr><td><input type='button' id='savePref' value='Save' onclick='savePreferences(0)'><input type='button' id='editPref' value='Edit' style='display:none;' onclick='savePreferences(1)'></td></tr>
+                </table>
+            </div>
+            <div class='acc'>
+                <h3>My Info</h3>
+                Status<br>
+                <textarea id='contentInput' rows="4" cols="31"></textarea><br>
+                Profile Pic<br>
+                <img id='profPic' style='width:250ox; height:250px; display:none;'><br>
+                <input type='file' id='openFilePic'> 
+            </div>
+        </div>
+        
+        
+        <script>
+        function savePreferences(num){
+            var body=document.body;
+            var fontSize=document.getElementById('fontRange');
+            var bckgColor=document.getElementById('bckgColor');
+            var fontColor=document.getElementById('fontColor');
+            var fontFamily=document.getElementById('fontFamily');
+            if (num==0){
+                body.style.fontSize = String(fontSize.value+'px');
+                body.style.backgroundColor=bckgColor.value;
+                body.style.color=fontColor.value;
+                body.style.fontFamily=fontFamily.value;
+                fontSize.disabled=true;
+                bckgColor.disabled=true;
+                fontColor.disabled=true;
+                fontFamily.disabled=true;
+                document.getElementById('savePref').style.display='none';
+                document.getElementById('editPref').style.display='inline';
+            } else if(num==1){
+                fontSize.disabled=false;
+                bckgColor.disabled=false;
+                fontColor.disabled=false;
+                fontFamily.disabled=false;
+                document.getElementById('savePref').style.display='inline';
+                document.getElementById('editPref').style.display='none';
+            }
+        }
+        
+        function submitPass(num){
+            var userInput=document.getElementById('userInput');
+            var passInput=document.getElementById('passInput');
+            var saveButton=document.getElementById('savePass');
+            var editButton=document.getElementById('editPass');
+            if (num==0){
+                userInput.disabled=true;
+                passInput.disabled=true;
+                saveButton.style.display='none';
+                editButton.style.display='inline';
+            } else if (num==1){
+                userInput.disabled=false;
+                passInput.disabled=false;
+                saveButton.style.display='inline';
+                editButton.style.display='none';
+            }
+            
+        }
+        
+        var inputElement = document.getElementById("openFilePic");
+        inputElement.addEventListener("change", handleFiles, false);
+        function handleFiles() {
+            var file=this.files[0];
+            var img=document.getElementById('profPic');
+            img.file=file;
+            var reader = new FileReader();
+            reader.onload = (function(aImg) { return function(e) { aImg.src = e.target.result; }; })(img);
+            reader.readAsDataURL(file);
+            img.style.display='inherit';
+        }
+            
+        </script>
+    </body>
+</html>

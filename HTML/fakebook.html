@@ -1,0 +1,97 @@
+<html>
+<head>
+    <title>FakeBook</title>
+</head>
+<style>
+  /* put all CSS here */
+   body{
+       background-color: rgb(190,200,200);
+   }
+  .outer{
+      background-color: rgb(190,200,200);
+    width:100%;
+    margin:0 auto;       /* keeps page centered */
+    
+  }
+  .bar{
+    background-color:blue;
+    width:100%;
+    color:white;
+    padding:7px;
+    clear:both;    /* use this after floated divs */
+  } 
+
+  .center{
+      width:100%;
+      margin:0 auto;
+  }
+  
+  .leftcenter{
+      width:25%;
+      background-color:red;
+      float:left;
+  }
+  
+  .rightside{
+      width:195px;
+      height:100%;
+      position:absolute;
+      right:0;
+      top:0;
+      border-left:solid gray 1px;
+      padding:5;
+}
+   .rightsideinner{
+      background-color: rgb(190,200,200);
+      padding:3;
+      border-bottom:solid gray 1px;
+   }
+
+    .inner{ 
+        padding:1px;
+        float:left;
+    }
+    #left{
+        width:96px;       /* width doesn't count padding/border/margin */
+    }
+    #center{
+        width:346px;
+    }
+    #right{
+        width:146px;
+    }
+    .white{
+        background-color:white;
+    }
+  
+  
+</style>
+<body>
+  <!--  put all HTML elements here --> 
+  <div class='outer'>
+      <div class='rightside'>
+          <div class='rightsideinner'>some stuff is over here</div>
+          <div class='rightsideinner'>some more stuff is over here</div>
+      </div>
+      
+      <!-- The center of the page-->
+      <div class ='center'>
+        <div class='inner' id='left'>
+            <div class='white'>
+                test
+            </div>
+        </div>
+        <div class='inner' id='center'>
+            <div class='white'>
+                test
+            </div>
+        </div>
+        <div class='inner' id='right'>
+            <div class='white'>
+                test
+            </div>
+        </div> 
+      </div>
+  </div>
+</body>
+</html>
